@@ -1,0 +1,62 @@
+tasks = []
+
+def addTask(t):
+    tasks.append(t)
+    return "Task Added...."
+
+def updateTask(indexno):
+    indexno -= 1
+    if 0 <= indexno < len(tasks):
+        tasks[indexno]["Done"] = True
+        return " status updated......"
+    else:
+        return " invalid number......"
+
+def showTask():
+    count = 1
+    for i in tasks:
+        mark = "Done" if i["Done"] else "Not Done"
+        print(f" {count}. {i["Name"]} - {mark}")
+        count+=1
+        
+def deleteTask(indexno):
+    indexno -= 1
+    val = tasks.pop(indexno)
+    return f" {val["Name"]} task removed successfully..."
+
+
+print("welcome ")
+while True:
+    print("\n-------To Do List App------")
+    print("1. Add Task")
+    print("2. Update Task")
+    print("3. Show Task")
+    print("4. Delete Task")
+    print("5. Exit")
+
+    choice = int(input("Enter your choice : "))
+
+    if choice == 1:
+        task = input("Enter task : ")
+        print(addTask({"Name":task,"Done":False}))
+
+    elif choice == 2:
+        tnum = int(input("Enter task number to update status: "))
+        print(updateTask(tnum))
+
+    elif choice == 3:
+        showTask()
+
+    elif choice == 4:
+        tno = int(input("Enter task number to delete: "))
+        print(deleteTask(tno))
+
+    elif choice == 5:
+        print("-----Thankyou-----  ")
+        break
+    else:
+        print(" invalid input.Please enter correct number.")    
+
+
+
+
